@@ -112,7 +112,9 @@ final class Node implements NodeInterface
                     $value .= ' ';
                 }
 
-                $attr .= '="'.StringSanitizer::encodeHtmlEntities($value).'"';
+                $attr .= '="'.$value.'"';
+            } else {
+                $attr .= '=""';
             }
 
             $rendered[] = $attr;
