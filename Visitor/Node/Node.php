@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\HtmlSanitizer\Visitor\Node;
 
+use Humanoid\Utils\HtmlUtils;
 use Symfony\Component\HtmlSanitizer\TextSanitizer\StringSanitizer;
 
 /**
@@ -110,6 +111,10 @@ final class Node implements NodeInterface
                 // quotes around the attribute when computing nodeB.innerHTML.
                 if (str_contains($value, '`')) {
                     $value .= ' ';
+                }
+
+                if ($name === 'data-gtm') {
+                    $value = HtmlUtils::jsonEncodeAttribute($value);
                 }
 
                 $attr .= '="'.$value.'"';
