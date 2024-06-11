@@ -114,7 +114,7 @@ final class Node implements NodeInterface
                 }
 
                 if ($name === 'data-gtm') {
-                    $value = HtmlUtils::jsonEncodeAttribute($value);
+                    $value = esc_attr($value);
                 }
 
                 $attr .= '="'.$value.'"';
